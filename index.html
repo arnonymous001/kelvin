@@ -201,10 +201,10 @@
     
     <!--form action="/action_page.php" target="_blank"-->
     <form method="post">
-      <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
-      <input class="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email">
-      <input class="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject">
-      <input class="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment">
+      <input id="name" class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+      <input id="email" class="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email">
+      <input id="subject" class="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject">
+      <input id="comment" class="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment">
       <!--button class="w3-button w3-black w3-section" type="submit">
         <i class="fa fa-paper-plane"></i> SEND MESSAGE
       </button-->
@@ -264,7 +264,7 @@ for(var i=0; i<nbOfLines; i++){
   </script>
  
   <script type="text/javascript">
-    function sendEmail() {
+    function sendEmaill() {
       Email.send({
         Host: "smtp.gmail.com",
         Username: "sender@email_address.com",
@@ -278,6 +278,16 @@ for(var i=0; i<nbOfLines; i++){
           alert("mail sent successfully")
         });
     }
+    function sendEmail() {
+    var nameValue = document.getElementById("name").value;
+    var emailValue = document.getElementById("email").value;
+    var subjectValue = document.getElementById("subject").value;
+    var commentValue = document.getElementById("comment").value;
+    var bodyValuee = commentValue + '\n\n' + nameValue + '\n' + emailValue
+    var bodyValue = [commentValue, nameValue, emailValue].join('  ')
+    
+    	window.open('mailto:info@greengrowsolar.co.za?subject='+ subjectValue + '&body='+ bodyValue);
+	}
   </script>
 
 </body>
